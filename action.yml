@@ -28,5 +28,3 @@ runs:
         override_branch: ${{ inputs.branch }}
         verbose: ${{ inputs.verbose }}
         fail_ci_if_error: ${{ inputs.fail_ci_if_error }}
-  fixes:
-    - "::src/"           # move root   e.g., "path/" => "after/path/"
