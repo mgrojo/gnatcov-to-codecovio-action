@@ -2,8 +2,8 @@ name: 'GNATcov to codecov.io'
 description: 'Upload coverage results from gnatcov to codecov.io'
 inputs:
   token:
-    description: 'Repository upload token - get it from codecov.io. Required only for private repositories'
-    required: false
+    description: 'Repository upload token - get it from codecov.io.'
+    required: true
   branch:
     description: 'Override branch, if using other than the default branch'
     required: false
@@ -22,8 +22,7 @@ runs:
     - name: Convert .xcov files to .gcov
       run: $GITHUB_ACTION_PATH/xcov2gcov.sh
       shell: bash
-
-    - uses: codecov/codecov-action@v2
+    - uses: codecov/codecov-action@v5
       with:
         token: ${{ inputs.token }}
         override_branch: ${{ inputs.branch }}
