@@ -30,7 +30,7 @@ gnatcov_header_lines=6
 IFS=$'\n'
 for file in $(find . -type f -name '*.xcov'); do
     echo "Input file:" $file
-    src_basename="$(basename -- ${file%.xcov})"
+    src_basename="${file%.xcov}"
     src_file=$(cat ${file} | head -1 | cut -d: -f1)
     gcov_file=${src_file}.gcov
 
