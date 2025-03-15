@@ -30,12 +30,12 @@ gnatcov_header_lines=6
 IFS=$'\n'
 for file in $(find . -type f -name '*.xcov'); do
     echo "Input file:" $file
-    src_basename="${file%.xcov}"
+    src_basename="$(basename ${file%.xcov})"
     src_file=$(cat ${file} | head -1 | cut -d: -f1)
     gcov_file=${src_file}.gcov
 
     echo "Output file:" $gcov_file
-    echo "        -: 0:Source:${src_basename}" > ${gcov_file}
+    echo "        -: 0:Source:${src_file}" > ${gcov_file}
     echo "        -: 0:Graph:${src_basename}.gcno" >> ${gcov_file}
     echo "        -: 0:Data:${src_basename}.gcda" >> ${gcov_file}
     echo "        -: 0:Runs:1" >> ${gcov_file}
